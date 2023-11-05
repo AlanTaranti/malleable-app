@@ -4,7 +4,7 @@
   "description": "Aplicação web para explorar o conceito de software maleável ",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve:frontend": "npm --prefix frontend run serve",
     "lint": "eslint --fix . && prettier --write --log-level warn .",
     "lint:check": "eslint . && prettier --check --log-level warn .",
     "prepare": "husky install"
