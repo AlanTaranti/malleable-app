@@ -17,6 +17,7 @@
     "vue": "^3.3.7"
   },
   "dependencies": {
+    "@picocss/pico": "^1.5.10",
     "firebase": "^10.5.2"
   }
 }
