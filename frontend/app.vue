@@ -1,14 +1,14 @@
 <template>
   <main class="container">
-    <malleable-component />
-    <br />
-    <hr />
-    <br />
     <form @submit.prevent="requestChanges">
       <label for="prompt">Prompt:</label>
       <input v-model="prompt" type="text" placeholder="Faz tudo melhor" />
-      <button :aria-busy="status === 'pending'" type="submit">Request Changes</button>
+      <button :aria-busy="status === 'pending'" type="submit">Melhorar</button>
     </form>
+    <br />
+    <hr />
+    <br />
+    <malleable-component />
   </main>
 </template>
 
@@ -19,7 +19,7 @@ const prompt = ref('');
 const status = ref<'idle' | 'pending'>('idle');
 
 const malleables = reactive<Record<string, any>>({
-  template: `<div class='container'>Crie algo aqui</div>`,
+  template: `<div class='container'></div>`,
   script: {
     data: {},
     methods: {},
