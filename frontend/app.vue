@@ -14,6 +14,8 @@
 
 <script lang="ts" setup>
 import '@picocss/pico';
+import { firebaseFunctions } from '~/plugins/firebase';
+import { httpsCallable } from '@firebase/functions';
 
 const prompt = ref('');
 const status = ref<'idle' | 'pending'>('idle');
@@ -49,16 +51,12 @@ const MalleableComponent = defineComponent({
 
 async function requestChanges() {
   status.value = 'pending';
-  const data = await $fetch('/api/completion', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ prompt: prompt.value, malleables: malleables }),
-  });
 
-  for (const key in data.malleables) {
-    malleables[key] = data.malleables[key];
+  const response = <{ data: { malleables: Record<string, unknown> } }>(
+    await firebaseFunctions.openaiCompletion({ prompt: prompt.value, malleables: malleables })
+  );
+  for (const key in response.data.malleables) {
+    malleables[key] = response.data.malleables[key];
   }
   status.value = 'idle';
 }
