@@ -14,7 +14,7 @@
 
 <script lang="ts" setup>
 import '@picocss/pico';
-import { firebaseFunctions } from '~/plugins/firebase';
+import { firebaseFunctions } from '~/config/firebase';
 
 const prompt = ref('');
 const status = ref<'idle' | 'pending'>('idle');
