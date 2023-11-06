@@ -1,7 +1,7 @@
 import { setGlobalOptions } from 'firebase-functions/v2';
-import { onCall } from 'firebase-functions/lib/v1/providers/https';
-import OpenAI from 'openai';
+import { onCall } from 'firebase-functions/v2/https';
 import { logger } from 'firebase-functions';
+import OpenAI from 'openai';
 
 /*
   Configuration
