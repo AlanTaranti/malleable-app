@@ -15,7 +15,6 @@
 <script lang="ts" setup>
 import '@picocss/pico';
 import { firebaseFunctions } from '~/plugins/firebase';
-import { httpsCallable } from '@firebase/functions';
 
 const prompt = ref('');
 const status = ref<'idle' | 'pending'>('idle');
