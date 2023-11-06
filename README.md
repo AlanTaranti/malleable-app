@@ -8,7 +8,7 @@ Uma aplicação maleável é uma aplicação que pode ser modificada pelo usuár
 
 ## Onde posso executar essa aplicação?
 
-Esse projeto ainda se encontra em ALPHA, ou seja muita coisa pode quebrar. E provavelmente vai :).
+Esse projeto ainda se encontra em ALPHA, ou seja muita coisa pode quebrar. E provavelmente vai :)
 
 Ele pode ser acessado em: https://malleable-app.web.app/
 
