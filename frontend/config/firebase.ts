@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
-import { getFunctions, httpsCallable } from 'firebase/functions';
+import { getFunctions, httpsCallable, connectFunctionsEmulator } from 'firebase/functions';
 // Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -18,6 +18,10 @@ const firebaseConfig = {
 const firebaseApp = initializeApp(firebaseConfig);
 
 const functions = getFunctions(firebaseApp, 'southamerica-east1');
+
+if (process.env.NODE_ENV === 'development') {
+  connectFunctionsEmulator(functions, '127.0.0.1', 5001);
+}
 
 export const firebaseFunctions = {
   openaiCompletion: httpsCallable(functions, 'openaiCompletion'),
