@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "serve:frontend": "npm --prefix frontend run serve",
+    "serve:functions": "npm --prefix cloud-functions run serve",
     "lint": "eslint --fix . && prettier --write --log-level warn .",
     "lint:check": "eslint . && prettier --check --log-level warn .",
     "prepare": "husky install"
