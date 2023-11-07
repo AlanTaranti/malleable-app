@@ -54,6 +54,9 @@ async function requestChanges() {
   const response = <{ data: { malleables: Record<string, unknown> } }>(
     await firebaseFunctions.openaiCompletion({ prompt: prompt.value, malleables: malleables })
   );
+
+  console.log('Novo Estado: ', response.data.malleables);
+
   for (const key in response.data.malleables) {
     malleables[key] = response.data.malleables[key];
   }
