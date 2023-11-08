@@ -9,10 +9,18 @@
       <label for="prompt" class="label mr-4">Prompt:</label>
       <div class="field has-addons">
         <div class="control is-expanded">
-          <input v-model="prompt" id="prompt" type="text" placeholder="Faz tudo melhor" class="input is-medium" />
+          <input
+            v-model="prompt"
+            id="prompt"
+            type="text"
+            :placeholder="criado ? 'Faz tudo melhor' : 'Crie algo incrível'"
+            class="input is-medium"
+          />
         </div>
         <div class="control">
-          <button :class="{ 'is-loading': status === 'pending' }" type="submit" class="button is-medium is-info">Melhorar</button>
+          <button :class="{ 'is-loading': status === 'pending' }" type="submit" class="button is-medium is-info">
+            {{ criado ? 'Melhorar' : 'Criar' }}
+          </button>
         </div>
       </div>
     </form>
@@ -26,6 +34,7 @@ import { firebaseFunctions } from '~/config/firebase';
 
 const prompt = ref('');
 const status = ref<'idle' | 'pending'>('idle');
+const criado = ref(false);
 
 const malleables = reactive<Record<string, any>>({
   template: `<div class='container'></div>`,
@@ -69,5 +78,7 @@ async function requestChanges() {
     malleables[key] = response.data.malleables[key];
   }
   status.value = 'idle';
+  criado.value = true;
+  prompt.value = '';
 }
 </script>
