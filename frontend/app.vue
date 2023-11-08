@@ -1,19 +1,27 @@
 <template>
-  <main class="container">
+  <Head>
+    <Title>Malleable App</Title>
+    <Meta name="description" content="Malleable App" />
+  </Head>
+  <main class="container section">
+    <div><h1 class="is-size-2 mb-4">Malleable App</h1></div>
     <form @submit.prevent="requestChanges">
-      <label for="prompt">Prompt:</label>
-      <input v-model="prompt" type="text" placeholder="Faz tudo melhor" />
-      <button :aria-busy="status === 'pending'" type="submit">Melhorar</button>
+      <label for="prompt" class="label mr-4">Prompt:</label>
+      <div class="field has-addons">
+        <div class="control is-expanded">
+          <input v-model="prompt" id="prompt" type="text" placeholder="Faz tudo melhor" class="input is-medium" />
+        </div>
+        <div class="control">
+          <button :class="{ 'is-loading': status === 'pending' }" type="submit" class="button is-medium is-info">Melhorar</button>
+        </div>
+      </div>
     </form>
-    <br />
     <hr />
-    <br />
     <malleable-component />
   </main>
 </template>
 
 <script lang="ts" setup>
-import '@picocss/pico';
 import { firebaseFunctions } from '~/config/firebase';
 
 const prompt = ref('');
