@@ -39,7 +39,7 @@ export const openaiCompletion = onCall(async (request) => {
       {
         role: 'system',
         content:
-          'You only speaks JSON. You are a computer in charge of modifying elements of a Vue application to suits the need of the user',
+          'You only speaks JSON. You are a computer in charge of modifying elements of a Vue 3 application with BulmaCSS to suits the need of the user',
       },
       {
         role: 'system',
@@ -49,7 +49,10 @@ export const openaiCompletion = onCall(async (request) => {
         role: 'user',
         content: data.prompt,
       },
-
+      {
+        role: 'user',
+        content: "The background color of the app's body is currently white",
+      },
       {
         role: 'user',
         content: 'An example response is this format: ' + JSON.stringify(expectedFormatResponse, null, 2),
